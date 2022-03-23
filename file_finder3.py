@@ -81,7 +81,7 @@ while conti == "s" or conti == "S":
 					
     elif opc == "B":
         change_dir()
-        texto_requerido = BMP(input("Introduce archivo a buscar o término de busqueda deseado: "))##############
+        texto_requerido = BMP(input("Introduce archivo a buscar o término de busqueda: "))##############
         sep = ns(input("¿Incluir separación por directorios?(n/s): "))
         print("BUSCANDO...\n")
         for root, folders, files in os.walk(os.getcwd()):
