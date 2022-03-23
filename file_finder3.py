@@ -77,10 +77,11 @@ while conti == "s" or conti == "S":
         else:
             print(Fore.BLACK+Back.RED+'\n{} ARCHIVOS ENCONTRADOS.'.format(count))
         print(Fore.RESET+Back.RESET+"")
+        
 					
     elif opc == "B":
         change_dir()
-        texto_requerido = BMP(input("Introduce archivo a buscar o término de busqueda: "))##############
+        texto_requerido = BMP(input("Introduce archivo a buscar o término de busqueda deseado: "))##############
         sep = ns(input("¿Incluir separación por directorios?(n/s): "))
         print("BUSCANDO...\n")
         for root, folders, files in os.walk(os.getcwd()):
