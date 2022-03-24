@@ -58,7 +58,7 @@ while conti == "s" or conti == "S":
         showed_dir = False
             
     if count == 0:
-        print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_requerido))
+        print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
     else:
         print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
     print(Fore.RESET+Back.RESET+"")
