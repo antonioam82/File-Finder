@@ -45,12 +45,13 @@ while conti == "s" or conti == "S":
     showed_dir = False
 					
     change_dir()
-    texto_requerido = BMP(input("Introduce archivo a buscar o término de busqueda: "))##############
+    texto_entrada = BMP(input("Introduce archivo a buscar o término de busqueda: "))##############
     print("BUSCANDO...\n")
     for root, folders, files in os.walk(os.getcwd()):
         for file in files:
-            name,ex = os.path.splitext(file)
-            if texto_requerido == file or texto_requerido in name:
+            #name,ex = os.path.splitext(file)
+            match_ = re.match(texto_entrada, file)
+            if match_:
                 show_dir(root)
                 count+=1
                 print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
