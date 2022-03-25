@@ -55,7 +55,8 @@ while conti.lower() == "s":
         else:
             print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
     except Exception as e:
-        print(Fore.BLACK+Back.RED+str(e))
+        print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e)))
+        
     print(Fore.RESET+Back.RESET+"")
 	
     conti = ns(input("¿Continuar(n/s)?: "))
