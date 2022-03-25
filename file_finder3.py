@@ -39,19 +39,23 @@ while conti.lower() == "s":
     change_dir()
     texto_entrada = BMP(input("Introduce patrón de busqueda: "))##############
     print("BUSCANDO...\n")
-    for root, folders, files in os.walk(os.getcwd()):
-        for file in files:
-            match_ = re.search(texto_entrada, file)
-            if match_:
-                show_dir(root)
-                count+=1
-                print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
-        showed_dir = False
+    try:
+        for root, folders, files in os.walk(os.getcwd()):
+            for file in files:
+                match_ = re.search(texto_entrada, file)
+                if match_:
+                    show_dir(root)
+                    count+=1
+                    print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
+            showed_dir = False
             
-    if count == 0:
-        print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
-    else:
-        print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
+            
+        if count == 0:
+            print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
+        else:
+            print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
+    except Exception as e:
+        print(Fore.BLACK+Back.RED+str(e))
     print(Fore.RESET+Back.RESET+"")
 	
     conti = ns(input("¿Continuar(n/s)?: "))
