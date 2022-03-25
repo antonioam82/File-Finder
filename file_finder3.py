@@ -41,7 +41,7 @@ while conti.lower() == "s":
     print("BUSCANDO...\n")
     for root, folders, files in os.walk(os.getcwd()):
         for file in files:
-            match_ = re.match(texto_entrada, file)
+            match_ = re.search(texto_entrada, file)
             if match_:
                 show_dir(root)
                 count+=1
