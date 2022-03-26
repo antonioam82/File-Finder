@@ -21,11 +21,6 @@ def change_dir():
         else:
             print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET)
 
-def substring(string,tup):
-    index = string.find(string[slice(tup[0],tup[1])])
-    final_string = (string[:index]+string[index:]+Fore.RESET+Style.NORMAL)
-    return final_string
-
 def show_dir(direc):
     global showed_dir
     if showed_dir == False:
@@ -51,8 +46,7 @@ while conti.lower() == "s":
                 if match_:
                     show_dir(root)
                     count+=1
-                    #print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
-                    print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+substring(file,match_.span()))))
+                    print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
             showed_dir = False
             
             
@@ -66,6 +60,4 @@ while conti.lower() == "s":
     print(Fore.RESET+Back.RESET+"")
 	
     conti = ns(input("¿Continuar(n/s)?: "))
-    
-
     
