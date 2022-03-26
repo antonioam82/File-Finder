@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from colorama import init, Fore, Back
+from colorama import init, Fore, Back, Style
 import re
 
 def BMP(s):
@@ -20,6 +20,11 @@ def change_dir():
             break
         else:
             print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET)
+
+def substring(string,tup):
+    index = string.find(string[slice(tup[0],tup[1])])
+    final_string = (string[:index]+string[index:]+Fore.RESET+Style.NORMAL)
+    return final_string
 
 def show_dir(direc):
     global showed_dir
@@ -46,7 +51,8 @@ while conti.lower() == "s":
                 if match_:
                     show_dir(root)
                     count+=1
-                    print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
+                    #print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(file)))
+                    print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+substring(file,match_.span()))))
             showed_dir = False
             
             
@@ -60,4 +66,6 @@ while conti.lower() == "s":
     print(Fore.RESET+Back.RESET+"")
 	
     conti = ns(input("¿Continuar(n/s)?: "))
+    
+
     
