@@ -53,7 +53,11 @@ while conti.lower() == "s":
         if count == 0:
             print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
         else:
-            print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
+            if count == 1:
+                print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO.")
+            else:
+                print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
+                
     except Exception as e:
         print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e)))
         
