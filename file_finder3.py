@@ -8,7 +8,7 @@ def BMP(s):
     return "".join((i if ord(i) < 10000 else '\ufffd' for i in s))
 
 def ns(c):
-    while c!=("s") and c!=("n") and c!="N" and c!="S":
+    while c.lower()!=("s") and c.lower()!=("n"):
         c=input("Escribe solo \'n/N\' o \'s/S\' según su opción: ")
     return(c)
 			
