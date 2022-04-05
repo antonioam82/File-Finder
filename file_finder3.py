@@ -28,8 +28,9 @@ def show_dir(direc):
         showed_dir = True
 
 conti = "s"
+init()
+
 while conti.lower() == "s":
-    init()
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
     print(Back.RESET+"")
     print("Directorio actual: {} ".format(os.getcwd()))
@@ -37,7 +38,7 @@ while conti.lower() == "s":
     showed_dir = False
 					
     change_dir()
-    texto_entrada = BMP(input("Introduce patrón de busqueda: "))##############
+    texto_entrada = BMP(input("Introduce patrón de búsqueda: "))
     print("BUSCANDO...\n")
     try:
         for root, folders, files in os.walk(os.getcwd()):
@@ -64,4 +65,5 @@ while conti.lower() == "s":
     print(Fore.RESET+Back.RESET+"")
 	
     conti = ns(input("¿Continuar(n/s)?: "))
+
     
