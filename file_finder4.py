@@ -30,6 +30,8 @@ def show_dir(direc):
 conti = "s"
 init()
 
+command_list = ['cl','cbd','sch','q']#lista comandos
+
 while conti.lower() == "s":
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
     print(Back.RESET+"")
