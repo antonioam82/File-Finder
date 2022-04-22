@@ -48,6 +48,12 @@ while True:
             change_dir()
         elif command == "q":
             break
+        elif command == "cl":
+            if os.name == "posix":
+                os.system("clear")
+            elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+                os.system("cls")
+            start()
         elif command == "sch":
             texto_entrada = BMP(input("Introduce patrón de búsqueda: "))
             print("BUSCANDO...\n")
@@ -60,6 +66,8 @@ while True:
                             count+=1
                             print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
                     showed_dir = False
+                    
+                #time.sleep(1)
                 if count == 0:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
                 else:
@@ -74,4 +82,5 @@ while True:
         print(Fore.RESET+Back.RESET+"")
         
     else:
-        print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET)    
+        print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET)
+   
