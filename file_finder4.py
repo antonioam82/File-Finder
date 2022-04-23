@@ -12,21 +12,24 @@ def ns(c):
         c=input("Escribe solo \'n/N\' o \'s/S\' según su opción: ")
     return(c)
 			
-def change_dir():
-    while True:
-        dire = input("Introduzca directorio base: ").strip()
-        if os.path.isdir(dire):
-            os.chdir(dire)
-            print("Directorio actual: {} ".format(os.getcwd()))
-            break
-        else:
-            print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET)
+def change_dir(d):
+    if os.path.isdir(d):
+        os.chdir(d)
+        print("Directorio actual: {} ".format(os.getcwd()))
+    else:
+        print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET)
 
 def show_dir(direc):
     global showed_dir
     if showed_dir == False:
         print(Fore.BLUE+Back.WHITE+direc+Fore.RESET+Back.RESET)
         showed_dir = True
+
+def clear():
+    if os.name == "posix":
+        os.system("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system("cls")
 
 def start():
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
@@ -37,25 +40,22 @@ init()
 
 command_list = ['cl','cbd','sch','q']#lista comandos
 start()
+
 while True:
-    
     count = 0
     showed_dir = False
-    command = input("Command: ")
+    command = input("Command: ").split(" ")
     
-    if command in command_list:
-        if command == "cbd":
-            change_dir()
-        elif command == "q":
+    if command[0] in command_list:
+        if command[0] == "cbd":
+            change_dir(command[1])
+        elif command[0] == "q":
             break
-        elif command == "cl":
-            if os.name == "posix":
-                os.system("clear")
-            elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-                os.system("cls")
+        elif command[0] == "cl":
+            clear()
             start()
-        elif command == "sch":
-            texto_entrada = BMP(input("Introduce patrón de búsqueda: "))
+        elif command[0] == "sch":
+            texto_entrada = BMP(command[1])
             print("BUSCANDO...\n")
             try:
                 for root, folders, files in os.walk(os.getcwd()):
@@ -66,8 +66,7 @@ while True:
                             count+=1
                             print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
                     showed_dir = False
-                    
-                #time.sleep(1)
+
                 if count == 0:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
                 else:
