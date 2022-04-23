@@ -6,18 +6,13 @@ import re
 
 def BMP(s):
     return "".join((i if ord(i) < 10000 else '\ufffd' for i in s))
-
-def ns(c):
-    while c.lower()!=("s") and c.lower()!=("n"):
-        c=input("Escribe solo \'n/N\' o \'s/S\' según su opción: ")
-    return(c)
 			
 def change_dir(d):
     if os.path.isdir(d):
         os.chdir(d)
-        print("Directorio actual: {} ".format(os.getcwd()))
+        print("Directorio actual: {} ".format(os.getcwd())+"\n")
     else:
-        print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET)
+        print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET+"\n")
 
 def show_dir(direc):
     global showed_dir
@@ -34,7 +29,7 @@ def clear():
 def start():
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
     print(Back.RESET+"")
-    print("Directorio actual: {} ".format(os.getcwd()))
+    print("Directorio actual: {} ".format(os.getcwd())+"\n")
     
 init()
 
@@ -68,18 +63,16 @@ while True:
                     showed_dir = False
 
                 if count == 0:
-                    print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada))
+                    print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
                 else:
                     if count == 1:
-                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO.")
+                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET+"\n")
                     else:
-                        print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count))
+                        print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
                 
             except Exception as e:
-                print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e)))
-                
-        print(Fore.RESET+Back.RESET+"")
+                print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e))+Fore.RESET+Back.RESET+"\n")
         
     else:
-        print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET)
+        print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET+"\n")
    
