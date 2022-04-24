@@ -50,7 +50,10 @@ while True:
             clear()
             start()
         elif command[0] == "sch":
-            texto_entrada = BMP(command[1])
+            command.pop(0)
+            string = (" ").join(command)
+            print(string)
+            texto_entrada = BMP(string)
             print("BUSCANDO...\n")
             try:
                 for root, folders, files in os.walk(os.getcwd()):
