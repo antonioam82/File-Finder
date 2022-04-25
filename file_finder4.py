@@ -26,6 +26,15 @@ def clear():
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
         os.system("cls")
 
+def commands():
+    print(Fore.WHITE+Back.BLUE+"---------------------------------COMANDOS---------------------------------")
+    print("cbd <dir>                                           CAMBIA DIRECTORIO BASE")
+    print("sch <string>                                            BÚSQUEDA CON REGEX")
+    print("cl                                                       LIMPIEZA PANTALLA")
+    print("q                                                       FINALIZAR PROGRAMA")
+    print("help                                                MUESTRA LISTA COMANDOS")
+    print("--------------------------------------------------------------------------\n"+Fore.RESET+Back.RESET)
+
 def start():
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
     print(Back.RESET+"")
@@ -33,7 +42,7 @@ def start():
     
 init()
 
-command_list = ['cl','cbd','sch','q']#lista comandos
+command_list = ['cl','cbd','sch','q','help']#lista comandos
 start()
 
 while True:
@@ -49,6 +58,8 @@ while True:
         elif command[0] == "cl":
             clear()
             start()
+        elif command[0] == "help":
+            commands()
         elif command[0] == "sch":
             command.pop(0)
             string = (" ").join(command)
