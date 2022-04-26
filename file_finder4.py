@@ -36,10 +36,19 @@ def commands():
     print("--------------------------------------------------------------------------\n"+Fore.RESET+Back.RESET)
 
 def start():
-    print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------")
-    print(Back.RESET+"")
+    print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------"+Back.RESET+"\n")
     print("Directorio actual: {} ".format(os.getcwd())+"\n")
-    
+
+def validate_entries(l):
+    if len(l) > 1:
+        if l[0] == 'sch' or l[0] == 'cbd':
+            return l
+    elif len(l) == 1:
+        if l[0] == 'cl' or l[0] == 'help' or l[0] == 'q':
+            return l
+    else:
+        return None
+            
 init()
 
 command_list = ['cl','cbd','sch','q','help']#lista comandos
@@ -48,9 +57,9 @@ start()
 while True:
     count = 0
     showed_dir = False
-    command = input("Command: ").split(" ")
+    command = validate_entries(input("Command: ").split(" "))
     
-    if command[0] in command_list:
+    if command is not None and command[0] in command_list:
         if command[0] == "cbd":
             change_dir(command[1])
         elif command[0] == "q":
@@ -80,7 +89,7 @@ while True:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
                 else:
                     if count == 1:
-                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET)
+                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET+"\n")
                     else:
                         print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
                 
