@@ -10,7 +10,7 @@ def BMP(s):
 def change_dir(d):
     if os.path.isdir(d):
         os.chdir(d)
-        print("Directorio actual: {} ".format(os.getcwd())+"\n")
+        print(Fore.GREEN+"Directorio actual: {} ".format(os.getcwd())+Fore.RESET+"\n")
     else:
         print(Fore.RED+"ERROR, DIRECTORIO NO VÁLIDO"+Fore.RESET+"\n")
 
@@ -80,7 +80,7 @@ while True:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
                 else:
                     if count == 1:
-                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET+"\n")
+                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET)
                     else:
                         print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
                 
