@@ -27,13 +27,13 @@ def clear():
         os.system("cls")
 
 def commands():
-    print(Fore.WHITE+Back.BLUE+"---------------------------------COMANDOS---------------------------------")
+    print(Fore.GREEN+"---------------------------------COMANDOS---------------------------------")
     print("cbd <dir>                                           CAMBIA DIRECTORIO BASE")
     print("sch <string>                                            BÚSQUEDA CON REGEX")
     print("cl                                                       LIMPIEZA PANTALLA")
     print("q                                                       FINALIZAR PROGRAMA")
     print("help                                                MUESTRA LISTA COMANDOS")
-    print("--------------------------------------------------------------------------\n"+Fore.RESET+Back.RESET)
+    print("--------------------------------------------------------------------------\n"+Fore.RESET)
 
 def start():
     print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------"+Back.RESET+"\n")
