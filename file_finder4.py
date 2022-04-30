@@ -63,6 +63,7 @@ while True:
         if command[0] == "cbd":
             change_dir(command[1])
         elif command[0] == "q":
+            clear()
             break
         elif command[0] == "cl":
             clear()
