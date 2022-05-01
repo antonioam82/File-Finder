@@ -61,7 +61,9 @@ while True:
     
     if command is not None and command[0] in command_list:
         if command[0] == "cbd":
-            change_dir(command[1])
+            command.pop(0)
+            dire = (" ").join(command)
+            change_dir(dire)
         elif command[0] == "q":
             clear()
             break
