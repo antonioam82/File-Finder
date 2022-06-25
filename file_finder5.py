@@ -27,7 +27,7 @@ def clear():
         os.system("cls")
 
 def commands():
-    print(Fore.GREEN+"---------------------------------COMANDOS---------------------------------")
+    print(Fore.GREEN+"\n---------------------------------COMANDOS---------------------------------")
     print("cbd <dir>                                           CAMBIA DIRECTORIO BASE")
     print("sch <string>                                            BÚSQUEDA CON REGEX")
     print("cl                                                       LIMPIEZA PANTALLA")
