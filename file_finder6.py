@@ -37,7 +37,7 @@ def commands():
     print("--------------------------------------------------------------------------\n"+Fore.RESET)
 
 def start():
-    print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------"+Back.RESET+"\n")
+    print(Back.BLUE+"\n--------------------------FILE FINDER WITH FUZZY SEARCH--------------------------"+Back.RESET+"\n")
     print("Directorio actual: {} ".format(os.getcwd())+"\n")
 
 def validate_entries(l):
@@ -49,6 +49,11 @@ def validate_entries(l):
             return l
     else:
         return None
+
+def fun(string,n):
+    ns = sorted(string)
+    if n < len(ns):
+        return ns[n]
             
 init()
 
@@ -57,6 +62,7 @@ start()
 
 while True:
     count = 0
+    num=0
     showed_dir = False
     command = validate_entries(input("Command: ").split(" "))
     
@@ -76,19 +82,19 @@ while True:
         elif command[0] == "sch":
             command.pop(0)
             string = (" ").join(command)
-            print(string)
             texto_entrada = BMP(string)
+            busqueda = texto_entrada.split(" ")
             print("BUSCANDO...\n")
             try:
                 for root, folders, files in os.walk(os.getcwd()):
                     for file in files:
-                        #match_ = re.search(texto_entrada, file)
-                        #if match_:
-                        if fuzz.token_sort_ratio(texto_entrada.lower(), file.lower()) == 100 or texto_entrada == "":
+                        if fuzz.token_sort_ratio(fun(busqueda,num), file.lower()) == 100 or texto_entrada == "":
                             show_dir(root)
                             count+=1
+                            num+=1
                             print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
                     showed_dir = False
+                    num=0
 
                 if count == 0:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
