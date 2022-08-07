@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import os
 from colorama import init, Fore, Back, Style
-import re
 from fuzzywuzzy import fuzz
 
 def BMP(s):
