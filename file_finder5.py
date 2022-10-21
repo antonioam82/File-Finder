@@ -53,6 +53,7 @@ def validate_entries(l):
 
 command_list = ['cl','cbd','sch','q','help']#lista comandos
 start()
+commands()
 
 while True:
     count = 0
