@@ -104,11 +104,12 @@ while True:
                     print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
                 else:
                     if count == 1:
-                        print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET+"\n")
+                        text = "\n"+"1_ARCHIVO ENCONTRADO."+"\n"
+                        console.print(text,style="black on green")
                     else:
                         #print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
                         #console.print("\n{} ARCHIVOS ENCONTRADOS.".format(count),style="red on green")
-                        text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."
+                        text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."+"\n"
                         #console.print("\nARCHIVOS ENCONTRADOS.",style="red on green")
                         console.print(text,style="black on green")
 
