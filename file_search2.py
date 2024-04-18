@@ -8,6 +8,7 @@ import re
 
 #print('[' + 'gamma'.center(20, '*') + ']')
 
+
 def BMP(s):
     return "".join((i if ord(i) < 10000 else '\ufffd' for i in s))
 
@@ -31,13 +32,6 @@ def clear():
         os.system("cls")
 
 def commands():
-    '''print(Fore.GREEN+"\n---------------------------------COMANDOS---------------------------------")
-    print("cbd <dir>                                           CAMBIA DIRECTORIO BASE")
-    print("sch <string>                                            BÚSQUEDA CON REGEX")
-    print("cl                                                       LIMPIEZA PANTALLA")
-    print("q                                                       FINALIZAR PROGRAMA")
-    print("help                                                MUESTRA LISTA COMANDOS")
-    print("--------------------------------------------------------------------------\n"+Fore.RESET)'''
     table = Table(title="COMANDOS")
     table.add_column("Comando")
     table.add_column("Acción")
@@ -48,7 +42,7 @@ def commands():
     table.add_row("q", "Finalizar programa")
     table.add_row("help", "Mostrar linea de comandos")
 
-    console = Console()
+    #console = Console()
     console.print(table)
 
 def start():
@@ -68,6 +62,7 @@ def validate_entries(l):
 
 
 command_list = ['cl','cbd','sch','q','help']#lista comandos
+console = Console()
 start()
 commands()
 
