@@ -6,9 +6,6 @@ from rich.console import Console
 from rich.table import Table
 import re
 
-#print('[' + 'gamma'.center(20, '*') + ']')
-
-
 def BMP(s):
     return "".join((i if ord(i) < 10000 else '\ufffd' for i in s))
 
@@ -47,7 +44,10 @@ def commands():
 
 def start():
     init()
-    print(Back.BLUE+"\n--------------------------FILE FINDER WITH REGEX--------------------------"+Back.RESET+"\n")
+    #print('gamma'.center(20, '*'))
+    #text = "\n--------------------------FILE SEARCH WITH REGEX--------------------------"+"\n"
+    text = '\n'+'FILE SEARCH WITH REGEX'.center(74, '-')+'\n'
+    console.print(text,style="white on blue")
     print("Directorio actual: {} ".format(os.getcwd())+"\n")
 
 def validate_entries(l):
@@ -106,10 +106,15 @@ while True:
                     if count == 1:
                         print(Fore.BLACK+Back.GREEN+"\n1 ARCHIVO ENCONTRADO."+Fore.RESET+Back.RESET+"\n")
                     else:
-                        print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
+                        #print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
+                        #console.print("\n{} ARCHIVOS ENCONTRADOS.".format(count),style="red on green")
+                        text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."
+                        #console.print("\nARCHIVOS ENCONTRADOS.",style="red on green")
+                        console.print(text,style="black on green")
 
             except Exception as e:
                 print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e))+Fore.RESET+Back.RESET+"\n")
 
     else:
         print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET+"\n")
+
