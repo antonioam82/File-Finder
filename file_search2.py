@@ -23,12 +23,18 @@ def show_dir(direc):
         showed_dir = True
 
 def clear():
-    if os.name == "posix":
-        os.system("clear")
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-        os.system("cls")
+    try:
+        if os.name == "posix":
+            os.system("clear")
+        elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system("cls")
+    except Exception as e:
+        error = str(e)
+        text = "\n" + f"ERROR: {error}" + "\n"
+        console.print(text,style="black on red")
 
 def commands():
+    print("\n")
     table = Table(title="COMANDOS")
     table.add_column("Comando")
     table.add_column("Acción")
@@ -39,8 +45,8 @@ def commands():
     table.add_row("q", "Finalizar programa")
     table.add_row("help", "Mostrar linea de comandos")
 
-    #console = Console()
     console.print(table)
+    print("\n")
 
 def start():
     init()
