@@ -44,8 +44,6 @@ def commands():
 
 def start():
     init()
-    #print('gamma'.center(20, '*'))
-    #text = "\n--------------------------FILE SEARCH WITH REGEX--------------------------"+"\n"
     text = '\n'+'FILE SEARCH WITH REGEX'.center(74, '-')+'\n'
     console.print(text,style="white on blue")
     print("Directorio actual: {} ".format(os.getcwd())+"\n")
@@ -101,16 +99,14 @@ while True:
                     showed_dir = False
 
                 if count == 0:
-                    print(Fore.BLACK+Back.RED+"No se encontraron coincidencias con \'{}\'.".format(texto_entrada)+Fore.RESET+Back.RESET+"\n")
+                    text = "\n" + f"No se encontraron coincidencias con_'{texto_entrada}'." + "\n"
+                    console.print(text,style="black on red")
                 else:
                     if count == 1:
                         text = "\n"+"1_ARCHIVO ENCONTRADO."+"\n"
                         console.print(text,style="black on green")
                     else:
-                        #print(Fore.BLACK+Back.GREEN+"\n{} ARCHIVOS ENCONTRADOS.".format(count)+Fore.RESET+Back.RESET+"\n")
-                        #console.print("\n{} ARCHIVOS ENCONTRADOS.".format(count),style="red on green")
                         text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."+"\n"
-                        #console.print("\nARCHIVOS ENCONTRADOS.",style="red on green")
                         console.print(text,style="black on green")
 
             except Exception as e:
