@@ -109,14 +109,17 @@ while True:
                     console.print(text,style="black on red")
                 else:
                     if count == 1:
-                        text = "\n"+"1_ARCHIVO ENCONTRADO."+"\n"
+                        text = "\n"+"1 ARCHIVO ENCONTRADO."+"\n"
                         console.print(text,style="black on green")
                     else:
-                        text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."+"\n"
+                        text = "\n"+str(count)+" ARCHIVOS ENCONTRADOS."+"\n"
                         console.print(text,style="black on green")
 
             except Exception as e:
-                print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e))+Fore.RESET+Back.RESET+"\n")
+                error = str(e)
+                text = "\n" + f"ERROR: {error}" + "\n"
+                console.print(text,style="black on red")
+                #print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e))+Fore.RESET+Back.RESET+"\n")
 
     else:
         print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET+"\n")
