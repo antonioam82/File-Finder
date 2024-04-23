@@ -89,7 +89,6 @@ while True:
             dire = (" ").join(command)
             change_dir(dire)
         elif command[0] == "q":
-            #clear()
             break
         elif command[0] == "cl":
             clear()
@@ -108,6 +107,7 @@ while True:
                 for root, folders, files in os.walk(os.getcwd()):
                     if stop:
                         print("stopped")
+                        listener.stop()
                         break
                     for file in files:
                         if stop:
@@ -119,6 +119,7 @@ while True:
                             print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
                     showed_dir = False
 
+                listener.stop()#
                 if count == 0:
                     text = "\n" + f"No se encontraron coincidencias con_'{texto_entrada}'." + "\n"
                     console.print(text,style="black on red")
