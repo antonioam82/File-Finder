@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+from pynput import keyboard
 from colorama import init, Fore, Back, Style
 from rich.console import Console
 from rich.table import Table
@@ -64,6 +65,12 @@ def validate_entries(l):
     else:
         return None
 
+def on_press(key):##
+    global stop
+    if key == keyboard.Key.space:
+        stop = True
+        return False
+
 
 command_list = ['cl','cbd','sch','q','help']#lista comandos
 console = Console()
@@ -73,6 +80,7 @@ commands()
 while True:
     count = 0
     showed_dir = False
+    stop = False
     command = validate_entries(input(str(os.getcwd())+"\\FM:\\> ").split(" "))
 
     if command is not None and command[0] in command_list:
@@ -93,10 +101,17 @@ while True:
             string = (" ").join(command)
             print(string)
             texto_entrada = BMP(string)
+            listener = keyboard.Listener(on_press=on_press)
+            listener.start()
             print("BUSCANDO...\n")
             try:
                 for root, folders, files in os.walk(os.getcwd()):
+                    if stop:
+                        print("stopped")
+                        break
                     for file in files:
+                        if stop:
+                            break
                         match_ = re.search(texto_entrada, file)
                         if match_:
                             show_dir(root)
@@ -119,7 +134,6 @@ while True:
                 error = str(e)
                 text = "\n" + f"ERROR: {error}" + "\n"
                 console.print(text,style="black on red")
-                #print(Fore.BLACK+Back.RED+'ERROR: {} '.format(str(e))+Fore.RESET+Back.RESET+"\n")
 
     else:
         print(Fore.RED+"ERROR, COMANDO NO VÁLIDO"+Fore.RESET+"\n")
