@@ -101,8 +101,10 @@ while True:
             string = (" ").join(command)
             print(string)
             texto_entrada = BMP(string)
+            
             listener = keyboard.Listener(on_press=on_press)
             listener.start()
+            
             print("BUSCANDO...\n")
             try:
                 for root, folders, files in os.walk(os.getcwd()):
