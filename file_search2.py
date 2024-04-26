@@ -55,6 +55,7 @@ def start():
     text = '\n'+'FILE SEARCH WITH REGEX'.center(74, '-')+'\n'
     console.print(text,style="white on blue")
     print("Directorio actual: {} ".format(os.getcwd())+"\n")
+    commands()
 
 def validate_entries(l):
     if len(l) > 1:
@@ -76,7 +77,7 @@ def on_press(key):##
 command_list = ['cl','cbd','sch','q','help']#lista comandos
 console = Console()
 start()
-commands()
+#commands()
 
 while True:
     count = 0
@@ -122,7 +123,7 @@ while True:
                             print(Fore.GREEN+'{}-'.format(count)+os.path.join(root,BMP(Fore.YELLOW+Style.DIM+file+Fore.RESET+Style.NORMAL)))
                     showed_dir = False
 
-                listener.stop()#
+                listener.stop()
                 if count == 0:
                     text = "\n" + f"No se encontraron coincidencias con_'{texto_entrada}'." + "\n"
                     console.print(text,style="black on red")
@@ -131,7 +132,7 @@ while True:
                         text = "\n"+"1 ARCHIVO ENCONTRADO."+"\n"
                         console.print(text,style="black on green")
                     else:
-                        text = "\n"+str(count)+" ARCHIVOS ENCONTRADOS."+"\n"
+                        text = "\n"+str(count)+"_ARCHIVOS ENCONTRADOS."+"\n"
                         console.print(text,style="black on green")
 
             except Exception as e:
