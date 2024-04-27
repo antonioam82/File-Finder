@@ -44,7 +44,7 @@ def commands():
     table.add_row("sch <string>", "Busqueda con regex")
     table.add_row("cl", "Limpieza de pantalla")
     table.add_row("q", "Finalizar programa")
-    table.add_row("help", "Mostrar linea de comandos")
+    table.add_row("help", "Mostrar tabla de comandos")
     table.add_row("<SPACE BAR>","Detener proceso de busqueda")
 
     console.print(table)
